@@ -38,21 +38,29 @@ def ask_santa():
         return jsonify({"error": "Missing JSON in request"}), 400
 
     data = request.get_json()
-    user_query = data.get('query', '').lower()  # Convert to lower case
+    user_input = data.get('query', '').lower()  # Convert to lower case
 
     # Santa's context for LLM
     santa_context = (
-        "You are Santa Claus, a jolly old man who loves Christmas and enjoys spreading joy and cheer. "
-        "You're responding to questions and requests from children and adults alike in your warm, friendly, and festive manner. "
-        "Remember, you always speak with kindness and a twinkle in your eye. Here's a new message: "
+        "You are Santa Claus, embodying the spirit of Christmas. "
+        "You're cheerful, jolly, and you love spreading Christmas cheer through songs and stories. "
+        "Whenever someone asks for a Christmas carol, you happily respond with a line or two from a well-known carol. "
+        "Here's a new message from someone: "
     )
-    full_prompt = santa_context + user_query
+
+    # Check if the user is asking Santa to sing
+    if 'sing' in user_input or 'carol' in user_input:
+        carol_prompt = "As Santa, sing a line from a Christmas carol. The message is: " + user_input
+        full_prompt = santa_context + carol_prompt
+    else:
+        full_prompt = santa_context + user_input
 
     # Invoke the Bedrock model with the full prompt
     response_body = invoke_bedrock_model(full_prompt)
     
     # Return the response from the model
     return jsonify(response_body)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

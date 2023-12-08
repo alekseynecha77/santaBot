@@ -46,3 +46,32 @@ body, html {
         opacity: 0;
     }
 }
+#christmasCountdown {
+    font-family: 'Tangerine', cursive; /* A more festive font style */
+    color: #fff; /* White color text */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background for contrast */
+    border: 3px solid #ff0000; /* Solid red border */
+    border-radius: 25px; /* Rounded corners for a softer look */
+    padding: 15px;
+    margin: 0 auto 20px; /* Centering the countdown and adding space below */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for a 3D effect */
+    width: 80%; /* Adjust width as per your design */
+    max-width: 600px; /* Maximum width */
+}
+
+#countdownTimer {
+    font-size: 1.5rem; /* Larger font size for better readability */
+    font-weight: bold; /* Bold for emphasis */
+    letter-spacing: 0.1rem; /* Spacing for a premium look */
+    background: rgba(255, 255, 255, 0.2); /* Slight white transparent overlay */
+    color: #ff0000; /* Red color for the timer to pop out */
+    margin-top: 10px; /* Space above the timer */
+    padding: 10px;
+    border-radius: 15px; /* Soft rounded corners for the timer box */
+    width: 100%; /* Full width within the container */
+    text-align: center; /* Center the text */
+}
