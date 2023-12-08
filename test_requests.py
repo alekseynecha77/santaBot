@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://127.0.0.1:5000/ask-santa'
+url = 'http://127.0.0.1:5000/'
 data = {"query": "tell me 3 top hottest planets."}
 
 try:

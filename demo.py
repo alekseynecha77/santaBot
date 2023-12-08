@@ -32,7 +32,7 @@ def invoke_bedrock_model(user_input):
     response_body = json.loads(response['body'].read())
     return response_body
 
-@app.route('/ask-santa', methods=['POST'])
+@app.route('/', methods=['POST'])
 def ask_santa():
     if not request.is_json:
         return jsonify({"error": "Missing JSON in request"}), 400

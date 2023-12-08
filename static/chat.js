@@ -1,7 +1,7 @@
 function sendQuery() {
     var userInput = document.getElementById('userQuery').value;
 
-    fetch('/ask-santa', {
+    fetch('/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
