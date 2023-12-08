@@ -1,0 +1,48 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #000000; /* This sets the background to a medium gray */
+    color: #fff; /* Sets the text color to white */
+    font-family: 'Arial', sans-serif; /* Optional: Sets a default font */
+}
+
+.container {
+    background: transparent; /* Removes any background color */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#userQuery {
+    border: 2px solid green;
+}
+
+.btn-primary {
+    background-color: red;
+    border-color: gold;
+}
+
+#response {
+    background: rgba(255, 255, 255, 0.8); /* Slightly opaque white */
+    color: black; /* Black text color for response */
+    border: 2px dashed green;
+}
+.snowflake {
+    background-image: url('/static/snowflake.svg'); /* Adjust the path as needed */
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 48px; /* You can adjust the size as desired */
+    height: 48px;
+    position: absolute; /* Ensure that the snowflakes can move freely */
+    /* Add your animation properties here */
+  }
+
+  @keyframes snowfall {
+    0% {
+        transform: translateY(-100vh); /* Starting well above the viewport */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh); /* Ending below the viewport */
+        opacity: 0;
+    }
+}

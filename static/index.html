@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Santa Chat</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Santa Chat</h1>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <input type="text" id="userQuery" class="form-control" placeholder="Ask a question">
+            </div>
+            <div class="col-md-2">
+                <button onclick="sendQuery()" class="btn btn-primary w-100">Ask Santa</button>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <div id="response" class="border p-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function sendQuery() {
+            var userQuery = document.getElementById('userQuery').value;
+            $.ajax({
+                url: '/ask-santa',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ query: userQuery }),
+                success: function(response) {
+                    document.getElementById('response').innerText = response.generations[0].text;
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    </script>
+
+<script>
+    // Snowflake creation function
+    function createSnowflakes() {
+        const numberOfSnowflakes = 50; // Adjust the number of snowflakes as needed
+        const snowContainer = document.createElement('div');
+
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.top = (-100) + 'px'; // Start above the viewport
+            snowflake.style.animationName = 'snowfall';
+            snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's'; // Random duration between 5 and 15 seconds
+            snowflake.style.animationDelay = (Math.random() * 5) + 's'; // Random delay up to 5 seconds
+            snowflake.style.animationIterationCount = 'infinite';
+            snowflake.style.animationTimingFunction = 'linear';
+            snowContainer.appendChild(snowflake);
+        }
+
+        document.body.appendChild(snowContainer);
+    }
+
+    // Initialize snowflakes when the window loads
+    window.onload = createSnowflakes;
+</script>
+
+    
+</body>
+</html>
