@@ -1,3 +1,5 @@
+
+
 from flask import Flask, request, jsonify
 import boto3
 import json
@@ -36,34 +38,20 @@ def ask_santa():
         return jsonify({"error": "Missing JSON in request"}), 400
 
     data = request.get_json()
-    user_query = data.get('query', '').lower()  # Convert to lower case for easier keyword matching
+    user_query = data.get('query', '').lower()  # Convert to lower case
 
-    # Define Santa's responses based on keywords
-    santa_responses = {
-        'present': 'Ho ho ho! Have you been good this year? What would you like for Christmas?',
-    'reindeer': 'My reindeer are resting for the big night! Rudolph says hello.',
-    'north pole': "It's chilly up here at the North Pole! But we're warm with the Christmas spirit.",
-    'elf': 'The elves are hard at work! They make sure everything is ready for Christmas Eve.',
-    'hi': 'Ho, ho, ho! Hello there! Merry Christmas! How can Santa help you today?',
-    'santa': 'Yes, it’s me, Santa! Have you written your list for Christmas yet?',
-    'christmas': 'Christmas is my favorite time of the year! Joy, gifts, and the spirit of giving!',
-    'naughty or nice': 'I’ve got my list, I’m checking it twice! I’ll find out who’s naughty or nice.',
-    'cookies': 'Oh, I do love cookies! Make sure to leave some out for me on Christmas Eve.',
-    'sleigh': 'The sleigh is all tuned up for delivering presents. We can’t wait to fly around the world!',
-    'gift': 'Every gift from a friend is a wish for your happiness. What’s on your wish list?',
-    'snow': 'I love a white Christmas, with snowflakes gently falling and covering the world in white.',
-    'happy holidays': 'Happy Holidays to you and your family! May your days be merry and bright!',
-    'mrs. claus': 'Mrs. Claus is doing wonderfully, thank you. She sends her warmest holiday wishes!',
-    'jingle bells': 'Jingle bells, jingle bells, jingle all the way! Oh what fun it is to ride in a one-horse open sleigh, hey!',
-    }
+    # Santa's context for LLM
+    santa_context = (
+        "You are Santa Claus, a jolly old man who loves Christmas and enjoys spreading joy and cheer. "
+        "You're responding to questions and requests from children and adults alike in your warm, friendly, and festive manner. "
+        "Remember, you always speak with kindness and a twinkle in your eye. Here's a new message: "
+    )
+    full_prompt = santa_context + user_query
+
+    # Invoke the Bedrock model with the full prompt
+    response_body = invoke_bedrock_model(full_prompt)
     
-    # Check if any keyword is in the user query and return the corresponding response
-    for keyword, response in santa_responses.items():
-        if keyword in user_query:
-            return jsonify({'generations': [{'text': response}]})
-
-    # If no keywords are found, invoke the Bedrock model
-    response_body = invoke_bedrock_model(user_query)
+    # Return the response from the model
     return jsonify(response_body)
 
 if __name__ == '__main__':
