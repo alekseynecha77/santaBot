@@ -39,7 +39,7 @@
         function sendQuery() {
             var userQuery = document.getElementById('userQuery').value;
             $.ajax({
-                url: '/',
+                url: '/santa_query',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ query: userQuery }),
