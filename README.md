@@ -1,19 +1,19 @@
 Overview
 
-Build SantaBot using Flask-based web application designed to interact with users in the spirit of Christmas.
-Utilizing a natural language processing model, SantaBot responds to user queries with cheerful and jolly Christmas carol lines.
-This application integrates with AWS's Bedrock Runtime service for processing the chat responses.
+SantaBot is a Flask-based web application designed to bring the joy of Christmas to users. Leveraging a natural language processing model, SantaBot responds to user inquiries with cheerful and jolly lines from Christmas carols. This application is integrated with AWS's Bedrock Runtime service for processing chat responses.
+
+
 
 Features
 
-Home Page: A welcoming interface where users can interact with SantaBot.
-Santa Query: A POST endpoint (/santa_query) that processes user queries and returns a response from SantaBot.
-AWS Bedrock Runtime Integration: Utilizes AWS's Bedrock Runtime service for generating responses based on user input.
+Home Page: A user-friendly interface for interacting with SantaBot.
+Santa Query: Utilizes a POST endpoint (/santa_query) to process user queries and deliver SantaBot's responses.
+AWS Bedrock Runtime Integration: Employs AWS's Bedrock Runtime service to dynamically generate responses based on user input.
+
 
 
 Requirements
-
 Python 3.x
 Flask
 boto3 (AWS SDK for Python)
-Internet connection for AWS services
+Internet connection (for AWS services)
