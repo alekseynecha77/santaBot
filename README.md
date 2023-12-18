@@ -17,10 +17,10 @@ _**AWS Bedrock Runtime Integration:**_  Employs AWS's Bedrock Runtime service to
 
 <h2><b>Requirements</b></h2>
 
-Python 3.x
+-Python 3.x
 
-Flask
+-Flask
 
-boto3 (AWS SDK for Python)
+-boto3 (AWS SDK for Python)
 
-Internet connection (for AWS services)
+-Internet connection (for AWS services)
