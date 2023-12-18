@@ -13,6 +13,7 @@ AWS Bedrock Runtime Integration: Employs AWS's Bedrock Runtime service to dynami
 
 
 Requirements
+
 Python 3.x
 Flask
 boto3 (AWS SDK for Python)
