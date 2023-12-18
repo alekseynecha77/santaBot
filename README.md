@@ -1,4 +1,4 @@
-Overview
+#Overview#
 
 SantaBot is a Flask-based web application designed to bring the joy of Christmas to users. Leveraging a natural language processing model, SantaBot responds to user inquiries with cheerful and jolly lines from Christmas carols. This application is integrated with AWS's Bedrock Runtime service for processing chat responses.
 
